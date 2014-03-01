@@ -1,8 +1,11 @@
 
-CC=g++
+CXX=g++
 
-ray: main.cpp vector3.o
-	$(CC) -o ray main.cpp vector3.o
+ray: main.cpp vector3.o colour.o image.o
+	$(CXX) -o ray main.cpp vector3.o colour.o image.o
 
-vector3.o: vector3.h vector3.cpp
-	$(CC) -c vector3.cpp
+.o:
+	$(CXX) -c $(.SOURCE)
+
+clean:
+	rm -f *.o
