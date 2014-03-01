@@ -1,0 +1,3 @@
+A small ray tracer, just for fun
+
+This raytracer won't do anything special, just raytrace basic scenes
