@@ -1,8 +1,8 @@
 
 CXX=g++
 
-ray: main.cpp vector3.o colour.o image.o
-	$(CXX) -o ray main.cpp vector3.o colour.o image.o
+ray: main.cpp *.o
+	$(CXX) -o ray main.cpp *.o
 
 .o:
 	$(CXX) -c $(.SOURCE)
