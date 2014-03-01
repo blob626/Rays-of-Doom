@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include "vector3.h"
 #include "image.h"
 #include "camera.h"
@@ -27,10 +28,15 @@ int main(int argc, char* argv[])
     {
       for(int col = 0; col < width; ++col)
 	{
-	  double inter=camera.getRay(row,col).intersect(sphereCenter,radius);
+	  
+	  Ray ray = camera.getRay(row,col);
+	  double inter = ray.intersect(sphereCenter,radius);
+	  
 	  if(inter >= 0)
 	    {
-	      image.data[row][col] = Colour(255, 255, 255);
+
+	      int color = floor(inter);
+	      image.data[row][col] = Colour(color, color, color);
 	    }
 	}
     }
