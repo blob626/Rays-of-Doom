@@ -2,6 +2,8 @@
 #include <fstream>
 #include "vector3.h"
 #include "image.h"
+#include "camera.h"
+#include "ray.h"
 
 int main(int argc, char* argv[])
 {
@@ -12,8 +14,29 @@ int main(int argc, char* argv[])
 
   std::cout << a.cross(b).normal().magnitude() << std::endl;
 
+  int width = 100;
+  int height = 100;
+
+  Image image(width, height, 255);
+  Camera camera(width, height);
+
+  Vector3 sphereCenter(0, 50, -50);
+  double radius = 10;
+  
+  for(int row = 0; row < height; ++row)
+    {
+      for(int col = 0; col < width; ++col)
+	{
+	  double inter=camera.getRay(row,col).intersect(sphereCenter,radius);
+	  if(inter >= 0)
+	    {
+	      image.data[row][col] = Colour(255, 255, 255);
+	    }
+	}
+    }
+  
   std::ofstream out("test.ppm");
-  out << Image(4, 4);
+  out << image;
   out.close();
   
   return 0;
