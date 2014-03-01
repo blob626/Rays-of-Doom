@@ -1,5 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include "vector3.h"
+#include "image.h"
 
 int main(int argc, char* argv[])
 {
@@ -9,6 +11,10 @@ int main(int argc, char* argv[])
   Vector3 c(0, 0, 1);
 
   std::cout << a.cross(b).normal().magnitude() << std::endl;
+
+  std::ofstream out("test.ppm");
+  out << Image(4, 4);
+  out.close();
   
   return 0;
 }
