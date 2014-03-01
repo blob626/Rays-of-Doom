@@ -10,9 +10,11 @@ class Image
   bool binary;
   int width, height;
   int maxValue;
-  std::vector<std::vector<Colour> > image;
+
   
- public:
+public:
+  std::vector<std::vector<Colour> > data;
+  
   Image();
   Image(int w, int h);
   Image(int w, int h, int m);

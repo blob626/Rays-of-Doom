@@ -24,11 +24,11 @@ void Image::initImage()
   for(int h = 0; h < height; ++h)
     {
       std::vector<Colour> row;
-      image.push_back(row);
+      data.push_back(row);
       for(int w = 0; w < width; ++w)
 	{
 	  Colour col(maxValue);
-	  image[h].push_back(col);
+	  data[h].push_back(col);
 	}
     }
 }
@@ -49,7 +49,7 @@ std::ostream& operator<<(std::ostream& stream, Image img)
     {
       for(int w = 0; w < img.width; ++w)
 	{
-	  stream << img.image[h][w] << "  ";
+	  stream << img.data[h][w] << "  ";
 	}
       stream << std::endl;
     }
