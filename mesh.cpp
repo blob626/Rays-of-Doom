@@ -50,24 +50,23 @@ void Mesh::readFile(const char* filename)
       std::string line;
       getline(file, line);
       std::istringstream convert(line, std::istringstream::in);
+      
       convert >> type;
 
       // check if the objects is a triangle of a quad
+      int v1, v2, v3, v4;
       if(type == 3)
 	{
-	  int v1, v2, v3;
 	  convert >> v1 >> v2 >> v3;
-	  Triangle tri(verts[v1],verts[v2],verts[v3]);
-	  faces.push_back(tri);
+	  
+	  faces.emplace_back(verts[v1], verts[v2], verts[v3]);
 	}
       if(type == 4)
 	{
-	  int v1, v2, v3, v4;
 	  convert >> v1 >> v2 >> v3 >> v4;
-	  Triangle tri1(verts[v1], verts[v3], verts[v2]);
-	  Triangle tri2(verts[v1], verts[v4], verts[v3]);
-	  faces.push_back(tri1);
-	  faces.push_back(tri2);
+	  
+	  faces.emplace_back(verts[v1], verts[v3], verts[v2]);
+	  faces.emplace_back(verts[v1], verts[v4], verts[v3]);
 	}
     }
   file.close();
