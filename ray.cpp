@@ -56,12 +56,12 @@ double Ray::intersect(Triangle triangle)
   
 }
 
-double Ray::intersect(Vector3 center, double radius)
+double Ray::intersect(Sphere sphere)
 {
-  Vector3 difference = start - center;
+  Vector3 difference = start - sphere.center;
   
   return square(direction.dot(difference)) -
-    difference.dot(difference) + square(radius);
+    difference.dot(difference) + square(sphere.radius);
 }
 
 double Ray::intersect(Mesh mesh)

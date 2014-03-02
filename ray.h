@@ -2,6 +2,7 @@
 #define _RAY_H
 
 #include "vector3.h"
+#include "sphere.h"
 #include "triangle.h"
 #include "mesh.h"
 
@@ -14,8 +15,7 @@ public:
   Ray();
   Ray(Vector3 strt, Vector3 dir);
 
-  double intersect(Vector3 center, double radius);
-  // double intersect(Sphere sphere);
+  double intersect(Sphere sphere);
   double intersect(Triangle triangle);
   double intersect(Mesh mesh);
   
