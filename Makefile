@@ -1,6 +1,6 @@
 
 CXX=g++
-OBJ=vector3.o image.o camera.o ray.o triangle.o colour.o
+OBJ=vector3.o image.o camera.o ray.o triangle.o colour.o mesh.o
 
 ray: main.cpp $(OBJ)
 	$(CXX) -o ray main.cpp $(OBJ)
