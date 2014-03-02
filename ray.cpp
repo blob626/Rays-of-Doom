@@ -1,6 +1,7 @@
 #include "ray.h"
 #include "vector3.h"
 #include "triangle.h"
+#include "mesh.h"
 
 Ray::Ray()
   : start(Vector3()), direction(Vector3())
@@ -27,7 +28,7 @@ Vector3 Ray::intersectionPoint(Vector3 point, Vector3 normal)
   return start + direction*(((point-start).dot(normal))/(direction.dot(normal)));
 }
 
-bool Ray::intersect(Triangle triangle)
+double Ray::intersect(Triangle triangle)
 {
   Vector3 point = intersectionPoint(triangle.vertexA, triangle.normal);
 
@@ -48,10 +49,10 @@ bool Ray::intersect(Triangle triangle)
 
       if(u+v <= 1 && (v >= 0 && u >= 0))
 	{
-	  return true;
+	  return u+v;
 	}
     }
-  return false;
+  return -1;
   
 }
 
@@ -63,3 +64,15 @@ double Ray::intersect(Vector3 center, double radius)
     difference.dot(difference) + square(radius);
 }
 
+double Ray::intersect(Mesh mesh)
+{
+  for(int i = 0; i < mesh.faces.size(); ++i)
+    {
+      double intersection = intersect(mesh.faces[i]);
+      if(intersection >= 0)
+	{
+	  return intersection;
+	}
+    }
+  return -1;
+}
