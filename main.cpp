@@ -5,6 +5,7 @@
 #include "image.h"
 #include "camera.h"
 #include "ray.h"
+#include "triangle.h"
 
 int main(int argc, char* argv[])
 {
@@ -23,6 +24,10 @@ int main(int argc, char* argv[])
 
   Vector3 sphereCenter(0, 50, -50);
   double radius = 10;
+
+  Triangle tri(Vector3(0, 50, -60),Vector3(0, 30, -20),Vector3(0, 70, -20));
+
+  
   
   for(int row = 0; row < height; ++row)
     {
@@ -30,12 +35,12 @@ int main(int argc, char* argv[])
 	{
 	  
 	  Ray ray = camera.getRay(row,col);
-	  double inter = ray.intersect(sphereCenter,radius);
-	  
-	  if(inter >= 0)
+	  //	  double inter = ray.intersect(sphereCenter,radius);
+	  bool inter = ray.intersect(tri);
+	  if(inter)
 	    {
 
-	      int color = floor(inter);
+	      int color = 255;//floor(inter);
 	      image.data[row][col] = Colour(color, color, color);
 	    }
 	}
