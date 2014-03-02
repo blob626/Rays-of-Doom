@@ -2,6 +2,7 @@
 #define _RAY_H
 
 #include "vector3.h"
+#include "triangle.h"
 
 class Ray
 {
@@ -14,12 +15,12 @@ public:
 
   double intersect(Vector3 center, double radius);
   // double intersect(Sphere sphere);
-  // double intersect(Triangle triangle);
+  bool intersect(Triangle triangle);
   // double intersect(Mesh mesh);
   
 private:
   void normalise();
-  
+  Vector3 intersectionPoint(Vector3 point, Vector3 normal);
 };
 
 #endif
