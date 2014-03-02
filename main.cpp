@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
   Image image(width, height, 255);
   Camera camera(width, height);
 
-  Mesh mesh("test.off");
+  Mesh mesh("test.obj");
   
   for(int row = 0; row < height; ++row)
     {
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	  if(inter > 0)
 	    {
 
-	      int color = floor(inter*255);
+	      int color = 255;//floor(inter*255);
 	      image.data[row][col] = Colour(color, color, color);
 	    }
 	}
