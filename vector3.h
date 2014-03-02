@@ -25,6 +25,7 @@ public:
 
   // prints the vector in the format <x,y,z>
   friend std::ostream& operator<<(std::ostream& stream, Vector3 vec);
+  friend std::istream& operator>>(std::istream& stream, Vector3& vec);
 };
 
 

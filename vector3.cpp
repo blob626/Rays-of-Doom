@@ -62,3 +62,9 @@ std::ostream& operator<<(std::ostream& stream, Vector3 vec)
   stream << "<" << vec.x <<"," << vec.y <<","<<vec.z<<">";
   return stream;
 }
+
+std::istream& operator>>(std::istream& stream, Vector3& vec)
+{
+  stream >> vec.x >> vec.y >> vec.z;
+  return stream;
+}
