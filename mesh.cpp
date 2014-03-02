@@ -24,11 +24,18 @@ void Mesh::readFile(const char* filename)
   std::string unwanted;
   file >> unwanted >> std::ws;
   getline(file, unwanted);
-  while(unwanted[0] == '#')
+  
+  if(unwanted[0] == '#')
     {
-      std::cout << unwanted << std::endl;
-      getline(file, unwanted);
+      std::cout << "object file comments:" << std::endl;
+      do
+	{
+	  std::cout << unwanted << std::endl;
+	  getline(file, unwanted);
+	}
+      while(unwanted[0] == '#');
     }
+ 
   std::istringstream convert(unwanted, std::istringstream::in);
   convert >> numVerts >> numFaces >> unwanted;
   Vector3* verts = new Vector3[numVerts];
