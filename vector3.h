@@ -5,9 +5,9 @@
 
 class Vector3
 {
+public:
   double x, y, z;
 
-public:
   Vector3();
   Vector3(double _x, double _y, double _z);
   Vector3 operator+(const Vector3 &other) const;
