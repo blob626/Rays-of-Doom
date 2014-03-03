@@ -30,6 +30,21 @@ Vector3 Ray::intersectionPoint(Vector3 point, Vector3 normal)
 
 double Ray::intersect(Triangle triangle)
 {
+
+  // check if the normal is facing the right direction
+  if(direction.dot(triangle.normal) < 0)
+    {
+      return -1;
+    }
+
+  // check if the bounding sphere is hit
+  Vector3 difference = start - triangle.center;
+  if(square(direction.dot(difference)) -  difference.dot(difference) + square(triangle.radius) < 0)
+    {
+      return -1;
+    }
+  
+  // get the actual intersectoin point
   Vector3 point = intersectionPoint(triangle.vertexA, triangle.normal);
 
   Vector3 edgeC = point - triangle.vertexA;
