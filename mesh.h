@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include "triangle.h"
 
 class Mesh
 {
- public:
+  // std::map<int, std::vector<int> > graph;
   
+ public:
+  std::vector<Vector3> verts;
   std::vector<Triangle> faces;
   
   Mesh();
@@ -16,6 +19,7 @@ class Mesh
   
  private:
   void readFile(const char* file);
+  void constructBounds();
 };
 
 #endif

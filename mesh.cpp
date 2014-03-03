@@ -31,7 +31,7 @@ void Mesh::readFile(const char* filename)
       do
 	{
 	  std::cout << unwanted << std::endl;
-	  getline(file, unwanted);
+	  getline(file, unwanted); 
 	}
       while(unwanted[0] == '#');
     }
@@ -59,7 +59,7 @@ void Mesh::readFile(const char* filename)
 	  int v1, v2, v3, v4 = -1;
 	
 	  temp >> v1 >> v2 >> v3 >> v4;
-	  if(v4 != -1)
+	  if(v4 == -1)
 	    {
 	      faces.emplace_back(verts[v1], verts[v2], verts[v3]);
 	    }
@@ -71,4 +71,9 @@ void Mesh::readFile(const char* filename)
 	}
     }
   file.close();
+}
+
+void constructBounds()
+{
+
 }
