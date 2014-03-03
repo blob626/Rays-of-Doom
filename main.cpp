@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
   Camera camera(width, height);
 
   Mesh mesh("test.obj");
-  
+  std::cout << "finished reading in file" << std::endl;
   for(int row = 0; row < height; ++row)
     {
       for(int col = 0; col < width; ++col)
